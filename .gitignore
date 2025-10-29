@@ -1,0 +1,39 @@
+# ==== PYTHON / DJANGO ====
+__pycache__/
+*.py[cod]
+*.sqlite3
+*.log
+*.pot
+*.pyc
+*.pyo
+*.pyd
+*.db
+
+# Environment
+venv/
+.env
+.env.local
+*.env
+
+# Django static & media
+staticfiles/
+media/
+
+# ==== REACT / NODE ====
+node_modules/
+dist/
+build/
+.cache/
+*.local
+*.log
+
+# ==== OS / EDITOR ====
+.DS_Store
+Thumbs.db
+
+# ==== VSCODE ====
+.vscode/
+
+# ==== OTHER ====
+*.bak
+*.tmp

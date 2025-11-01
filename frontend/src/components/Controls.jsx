@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 
 export default function Controls({ onUpload, onConvert, loading }) {
   const [file, setFile] = useState(null);
@@ -6,13 +6,31 @@ export default function Controls({ onUpload, onConvert, loading }) {
   const [palette, setPalette] = useState("original");
   const [dither, setDither] = useState(true);
   const [colors, setColors] = useState(8);
+  const [dragActive, setDragActive] = useState(false);
+  const inputRef = useRef();
+
+  const handleFile = (f) => {
+    setFile(f);
+    onUpload(f);
+  };
 
   const handleFileChange = (e) => {
     const f = e.target.files[0];
-    if (f) {
-      setFile(f);
-      onUpload(f);
-    }
+    if (f) handleFile(f);
+  };
+
+  const handleDrag = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    if (e.type === "dragenter" || e.type === "dragover") setDragActive(true);
+    else if (e.type === "dragleave") setDragActive(false);
+  };
+
+  const handleDrop = (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    setDragActive(false);
+    if (e.dataTransfer.files && e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]);
   };
 
   const handleConvertClick = () => {
@@ -25,15 +43,31 @@ export default function Controls({ onUpload, onConvert, loading }) {
 
   return (
     <div className="space-y-4 mb-6">
-      <input
-        type="file"
-        accept="image/*"
-        onChange={handleFileChange}
-        className="block w-full text-sm text-gray-700 file:mr-4 file:py-2 file:px-4
-          file:rounded-lg file:border-0 file:text-sm file:font-semibold
-          file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100"
-      />
-
+      <div
+        className={`border-2 border-dashed rounded-lg p-6 text-center transition
+          ${dragActive ? "border-indigo-500 bg-indigo-50" : "border-gray-300 bg-white"}`}
+        onDragEnter={handleDrag}
+        onDragOver={handleDrag}
+        onDragLeave={handleDrag}
+        onDrop={handleDrop}
+        onClick={() => inputRef.current.click()}
+        style={{ cursor: "pointer" }}
+      >
+        <input
+          type="file"
+          accept="image/*"
+          onChange={handleFileChange}
+          ref={inputRef}
+          style={{ display: "none" }}
+        />
+        <div className="flex flex-col items-center">
+          <svg width="48" height="48" fill="none" viewBox="0 0 24 24"><path fill="#6366f1" d="M12 16a1 1 0 0 1-1-1V8.41l-2.3 2.3a1 1 0 1 1-1.4-1.42l4-4a1 1 0 0 1 1.4 0l4 4a1 1 0 0 1-1.4 1.42L13 8.42V15a1 1 0 0 1-1 1Z"/><path fill="#6366f1" d="M20 18a1 1 0 0 1-1-1v-7a8 8 0 1 0-16 0v7a1 1 0 1 1-2 0v-7a10 10 0 1 1 20 0v7a1 1 0 0 1-1 1Z"/></svg>
+          <span className="mt-2 text-indigo-600 font-semibold">
+            {dragActive ? "Drop your image here..." : "Click or drag & drop an image"}
+          </span>
+          {file && <span className="mt-1 text-gray-500 text-sm">{file.name}</span>}
+        </div>
+      </div>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
         <label className="flex flex-col">
           <span className="font-medium mb-1">Pixel Size</span>

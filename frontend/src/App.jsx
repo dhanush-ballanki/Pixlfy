@@ -44,22 +44,27 @@ function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center p-6">
-      <h1 className="text-3xl font-bold mb-6 text-indigo-600">Pixlfy</h1>
+    <>
+      <div className="floating-shape floating-shape1"></div>
+      <div className="floating-shape floating-shape2"></div>
+      <div className="floating-shape floating-shape3"></div>
+      <div className="min-h-screen flex flex-col items-center p-6">
+        <h1 className="text-3xl font-bold mb-6 text-indigo-600">Pixlfy</h1>
 
-      <div className="w-full max-w-3xl bg-white shadow-lg rounded-2xl p-6">
-        <Controls
-          onUpload={handleUpload}
-          onConvert={handleConvert}
-          loading={loading}
-        />
-        <Preview origImage={origImage} outImage={outImage} />
+        <div className="w-full max-w-3xl bg-white shadow-lg rounded-2xl p-6">
+          <Controls
+            onUpload={handleUpload}
+            onConvert={handleConvert}
+            loading={loading}
+          />
+          <Preview origImage={origImage} outImage={outImage} />
+        </div>
+
+        <p className="mt-4 text-sm text-gray-500">
+          Built with React + Tailwind + Django 🧩
+        </p>
       </div>
-
-      <p className="mt-4 text-sm text-gray-500">
-        Built with React + Tailwind + Django 🧩
-      </p>
-    </div>
+    </>
   );
 }
 

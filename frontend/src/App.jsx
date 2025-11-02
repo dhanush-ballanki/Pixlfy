@@ -51,7 +51,7 @@ function App() {
       <div className="floating-shape floating-shape3"></div>
       <div className="min-h-screen flex flex-col items-center p-6">
         <div className="flex gap-2">
-          <img src="/favicon-96.png" alt="Logo" className="w-10 h-10 mt-1" />
+          <img src="/favicon-96.png" alt="Logo" className="w-10 h-10 " />
           <RainbowWaveText text="Pixlfy"/>
         </div>
         <div className="w-full max-w-3xl bg-white shadow-lg rounded-2xl p-6">

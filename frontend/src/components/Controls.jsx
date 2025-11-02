@@ -61,8 +61,8 @@ export default function Controls({ onUpload, onConvert, loading }) {
           style={{ display: "none" }}
         />
         <div className="flex flex-col items-center">
-          <svg width="48" height="48" fill="none" viewBox="0 0 24 24"><path fill="#6366f1" d="M12 16a1 1 0 0 1-1-1V8.41l-2.3 2.3a1 1 0 1 1-1.4-1.42l4-4a1 1 0 0 1 1.4 0l4 4a1 1 0 0 1-1.4 1.42L13 8.42V15a1 1 0 0 1-1 1Z"/><path fill="#6366f1" d="M20 18a1 1 0 0 1-1-1v-7a8 8 0 1 0-16 0v7a1 1 0 1 1-2 0v-7a10 10 0 1 1 20 0v7a1 1 0 0 1-1 1Z"/></svg>
-          <span className="mt-2 text-indigo-600 font-semibold">
+          <svg width="48" height="48" fill="none" viewBox="0 0 24 24"><path fill="#000" d="M12 16a1 1 0 0 1-1-1V8.41l-2.3 2.3a1 1 0 1 1-1.4-1.42l4-4a1 1 0 0 1 1.4 0l4 4a1 1 0 0 1-1.4 1.42L13 8.42V15a1 1 0 0 1-1 1Z"/><path fill="#000" d="M20 18a1 1 0 0 1-1-1v-7a8 8 0 1 0-16 0v7a1 1 0 1 1-2 0v-7a10 10 0 1 1 20 0v7a1 1 0 0 1-1 1Z"/></svg>
+          <span className="mt-2 text-black font-semibold">
             {dragActive ? "Drop your image here..." : "Click or drag & drop an image"}
           </span>
           {file && <span className="mt-1 text-gray-500 text-sm">{file.name}</span>}
@@ -122,11 +122,12 @@ export default function Controls({ onUpload, onConvert, loading }) {
         className={`w-full py-2 rounded-lg font-semibold text-white transition ${
           loading
             ? "bg-gray-400 cursor-not-allowed"
-            : "bg-indigo-600 hover:bg-indigo-700"
+            : "rainbow-bg"
         }`}
       >
         {loading ? "Converting..." : "Convert Image"}
       </button>
+
     </div>
   );
 }

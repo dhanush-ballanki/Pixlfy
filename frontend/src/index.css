@@ -69,3 +69,59 @@ body {
 .glow-btn:hover {
     box-shadow: 0 0 32px 8px #6366f1cc, 0 2px 12px #0003;
 }
+
+@keyframes rainbow-wave {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+.rainbow-text {
+    background: linear-gradient(90deg,
+            #ff595e,
+            #ffca3a,
+            #8ac926,
+            #1982c4,
+            #6a4c93,
+            #ff595e);
+    background-size: 400%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: rainbow-wave 6s linear infinite;
+}
+
+@keyframes rainbow-wave {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 100% 50%;
+    }
+}
+
+.rainbow-bg {
+    background: linear-gradient(90deg,
+            #ff595e,
+            #ffca3a,
+            #8ac926,
+            #1982c4,
+            #6a4c93,
+            #ff595e);
+    background-size: 300%;
+    color: white;
+    animation: rainbow-wave 5s linear infinite;
+    background-clip: padding-box;
+    border: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.rainbow-bg:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}

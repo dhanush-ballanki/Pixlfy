@@ -25,10 +25,11 @@ export default function Preview({ origImage, outImage }) {
           <a
             href={outImage}
             download="pixel_art.png"
-            className="mt-3 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition"
+            className="mt-3 rainbow-bg text-white px-4 py-2 rounded-lg transition"
           >
             ⬇ Download PNG
           </a>
+
         </div>
       )}
     </div>
